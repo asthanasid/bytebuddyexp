@@ -1,0 +1,6 @@
+com\mycompany\bbagent\ASMPremain.class
+com\mycompany\bbagent\CustomClassWriter.class
+com\mycompany\bbagent\Agent$1.class
+com\mycompany\bbagent\Agent.class
+com\mycompany\bbagent\KafkaSendAgent.class
+com\mycompany\bbagent\KafkaSendInterceptor.class
