@@ -8,8 +8,10 @@ package com.mycompany.bbagent;
 //import java.lang.instrument.Instrumentation;
 
 import java.lang.instrument.Instrumentation;
+import java.util.jar.JarFile;
 
 import net.bytebuddy.agent.builder.AgentBuilder;
+import net.bytebuddy.asm.Advice;
 import net.bytebuddy.description.type.TypeDescription;
 import net.bytebuddy.dynamic.DynamicType;
 import net.bytebuddy.implementation.FixedValue;
@@ -39,9 +41,11 @@ public class Agent {
                       .intercept(FixedValue.value("transformeded"))
 //                .method(named("sayHelloFoo"))
 //                .intercept(FixedValue.value("transformededAnotherFoo"));
-        .method(named("send"))        
-        .intercept(MethodDelegation.to(KafkaSendInterceptor.class)
-                                  .andThen(SuperMethodCall.INSTANCE)) ;
+        .method(named("send").and(takesArguments(2)))        
+        .intercept(Advice.to(KafkaSendCallbackAdvice.class));
+//        .intercept(MethodDelegation.to(KafkaSendCallbackInterceptor.class));        
+//        .intercept(MethodDelegation.to(KafkaSendInterceptor.class)
+//                                  .andThen(SuperMethodCall.INSTANCE)) ;
       }
     }).installOn(instrumentation);
   }

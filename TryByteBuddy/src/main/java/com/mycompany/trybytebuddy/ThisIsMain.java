@@ -12,6 +12,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -50,7 +51,10 @@ public class ThisIsMain {
             for (int i = 0; i < 100; i++) {
                 System.out.println(i);
                 Thread.sleep(500);
-                kafkaProducer.send(new ProducerRecord("test", Integer.toString(i), "test message - " + i));
+                kafkaProducer.send(new ProducerRecord("test", Integer.toString(i), "test message - " + i),
+                (rm , exc)->{
+                LoggerFactory.getLogger("sender++++++++++++++").info("callback received + " + rm.offset());
+            }).get();
             }
         } catch (Exception e) {
             e.printStackTrace();

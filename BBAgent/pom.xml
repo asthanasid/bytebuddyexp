@@ -52,6 +52,12 @@
             <artifactId>logback-core</artifactId>
             <version>1.2.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.12</artifactId>
+            <version>1.0.1</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
  
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -93,6 +99,13 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
+                        <configuration>
+                            <artifactSet>
+<!--                                <excludes>
+                                    <exclude>org.apache.kafka:kafka_2.12</exclude>
+                                </excludes>-->
+                            </artifactSet>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

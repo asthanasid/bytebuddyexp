@@ -1,6 +1,10 @@
-com\mycompany\bbagent\ASMPremain.class
+com\mycompany\bbagent\CustomCallback.class
 com\mycompany\bbagent\CustomClassWriter.class
+com\mycompany\bbagent\KafkaSendCallbackAdvice.class
 com\mycompany\bbagent\Agent$1.class
-com\mycompany\bbagent\Agent.class
-com\mycompany\bbagent\KafkaSendAgent.class
 com\mycompany\bbagent\KafkaSendInterceptor.class
+com\mycompany\bbagent\KafkaSendCallbackInterceptor.class
+com\mycompany\bbagent\ASMPremain.class
+com\mycompany\bbagent\Agent.class
+com\mycompany\bbagent\KafkaSendCallbackInterceptor$CustomCallback.class
+com\mycompany\bbagent\KafkaSendAgent.class
